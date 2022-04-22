@@ -1,4 +1,5 @@
 import random
+from money_system import ballance
 
 #roulette
 class roulette:
@@ -47,31 +48,35 @@ class roulette:
     rand_choice = lambda self : random.choice(list(self.dic)) #randomly chooses a roulette slot
     check_win = lambda self, choice : self.rand_choice(roulette) == choice #checks if the player won    
 
-def roulette_game():
-    ans = None
-    while ans != 'color' and ans !='number':
+def roulette_game(b):
+    x = ballance.bet_money(b)
+    if x:
+      ans = None
+      while ans != 'color' and ans !='number':
         ans = input('Would you like to bet on a color or number?: ')
-    match ans:
+      match ans:
         case 'color':
-            color_case()
+            color_case(b, x)
         case 'number':
-            number_case()    
+            number_case(b, x)    
 
-def color_case():
+def color_case(b, x):
     color = None
     while color != 'red' and color != 'black' and color != 'green':
         color = input('What color would you like to bet on?: ')
     if color == roulette.dic[roulette.rand_choice(roulette)]:
         print('You won!')
+        b.add_money(x + x*2)
     else:
         print('You lost!')
 
-def number_case():
+def number_case(b, x):
   number = None
   while 0<=number<=36:
         number = int(input('What number would you like to bet on?: '))
   if number == roulette.rand_choice(roulette):
         print('You won!')
+        b.add_money(x*2)
   else:
         print('You lost!')
         

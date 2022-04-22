@@ -1,5 +1,6 @@
 import random
 from time import sleep
+from money_system import ballance
 
 
 #slots
@@ -17,14 +18,20 @@ class slots:
         2]  #checks if the player won
 
 
-def slots_game():
-    slot_machine = slots.make_slot(slots)
-    print(slot_machine[0], end=' ', flush=True)
-    sleep(1)
-    print(slot_machine[1], end=' ', flush=True)
-    sleep(1)
-    print(slot_machine[2])
-    print('You won!' if slots.check_win(slot_machine) else 'You lost!')
+def slots_game(b):
+    x = ballance.bet_money(b)
+    if x:
+        slot_machine = slots.make_slot(slots)
+        print(slot_machine[0], end=' ', flush=True)
+        sleep(1)
+        print(slot_machine[1], end=' ', flush=True)
+        sleep(1)
+        print(slot_machine[2])
+        if slots.check_win(slot_machine):
+            print('You won!')
+            b.add_money(x + x * 3)
+        else:
+            print('You lost!')
 
 
 if __name__ != '__main__':

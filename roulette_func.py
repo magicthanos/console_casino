@@ -71,8 +71,8 @@ def color_case(b, x):
         print('You lost!')
 
 def number_case(b, x):
-  number = None
-  while 0<=number<=36:
+  number = -1
+  while not 0<=number<=36:
         number = int(input('What number would you like to bet on?: '))
   if number == roulette.rand_choice(roulette):
         print('You won!')

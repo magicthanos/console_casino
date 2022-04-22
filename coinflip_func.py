@@ -14,7 +14,7 @@ def coin_game(b):
         coin = None
         while coin not in ('heads', 'tails'):
             coin = input('Heads or tails?: ')
-            coin_condition(coin, b, x)
+        coin_condition(coin, b, x)
 
 
 def coin_condition(coin, b, x):

@@ -1,4 +1,6 @@
-from functions import coin_game, roullete_game, slots_game
+from coinflip_func import coin_game
+from roulette_func import roulette_game
+from slots_func import slots_game
 
 def main():
     print('Welcome to my casino!')
@@ -12,7 +14,7 @@ def main():
         case 1:
             coin_game()
         case 2:
-            roullete_game()
+            roulette_game()
         case 3:
             slots_game()
             

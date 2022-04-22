@@ -4,14 +4,15 @@ from money_system import ballance
 
 #coinflip
 class coinflip:
-    flip_the_coin = random.choice([0, 1])  #heads(0) or tails(1)
+    flip_the_coin = random.choice(
+        ('heads', 'tails'))  #randomly chooses heads or tails
 
 
 def coin_game(b):
-    x = ballance.bet_money(b)
-    if x:
+    x = ballance.bet_money(b)  #bet money
+    if x:  #if the bet was successful
         coin = None
-        while coin != 0 and coin != 1:
+        while coin not in ('heads', 'tails'):
             coin = int(input('Heads or tails?: '))
             coin_condition(coin, b, x)
 

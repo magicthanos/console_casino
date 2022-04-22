@@ -12,7 +12,7 @@ def main():
     while ans != 5:
         casino_choices(b, ans)
 
-def casino_choices(b, ans):
+def casino_choices(b, ans): #this is the main menu
     while ans not in (1, 2, 3, 4, 5):
         print('     1. Play coinflip')
         print('     2. Play roulette')
@@ -20,7 +20,7 @@ def casino_choices(b, ans):
         print('     4. Ballance')
         print('     5. Exit')
         ans = int(input('What would you like to do?: '))
-    match ans:
+    match ans: #can play only if you have money
         case 1:
             coin_game(b) if b.money >= 1 else print('You do not have enough money to play coinflip')
         case 2:
@@ -32,7 +32,5 @@ def casino_choices(b, ans):
         case 5:
             exit()
             
-            
-
 if __name__ == '__main__':
     main()

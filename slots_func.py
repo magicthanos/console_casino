@@ -19,9 +19,11 @@ class slots:
 
 
 def slots_game(b):
-    x = ballance.bet_money(b)
-    if x:
+    x = ballance.bet_money(b)  #bet money
+    if x:  #if the bet was successful
+        #make a slot
         slot_machine = slots.make_slot(slots)
+        #displays the slot machine with delay
         print(slot_machine[0], end=' ', flush=True)
         sleep(1)
         print(slot_machine[1], end=' ', flush=True)

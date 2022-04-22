@@ -49,24 +49,24 @@ class roulette:
     check_win = lambda self, choice : self.rand_choice(roulette) == choice #checks if the player won    
 
 def roulette_game(b):
-    x = ballance.bet_money(b)
-    if x:
+    x = ballance.bet_money(b) #bet money
+    if x: #if the bet was successful
       ans = None
       while ans != 'color' and ans !='number':
         ans = input('Would you like to bet on a color or number?: ')
       match ans:
         case 'color':
-            color_case(b, x)
+            color_case(b, x) #color case
         case 'number':
-            number_case(b, x)    
+            number_case(b, x)  #number case  
 
 def color_case(b, x):
     color = None
-    while color != 'red' and color != 'black' and color != 'green':
+    while color not in ('red', 'black', 'green'):
         color = input('What color would you like to bet on?: ')
     if color == roulette.dic[roulette.rand_choice(roulette)]:
         print('You won!')
-        b.add_money(x + x*2)
+        b.add_money(x + x * 2) if color != 'green' else b.add_money(x + x * 10) #if the color is green, the bet is multiplied by 10
     else:
         print('You lost!')
 
@@ -76,7 +76,7 @@ def number_case(b, x):
         number = int(input('What number would you like to bet on?: '))
   if number == roulette.rand_choice(roulette):
         print('You won!')
-        b.add_money(x*2)
+        b.add_money(x + x*2) if number != 0 else b.add_money(x + x*10) #if the number is 0, the bet is multiplied by 10
   else:
         print('You lost!')
         

@@ -11,15 +11,15 @@ class ballance:
 
     show_money = lambda self : print(f'Balance {self.money}')
     
-    def bet_money(self):
+    def bet_money(self): #bet money only if you have enough
         x = int(input('How much money would you like to bet?: '))
         if self.money >= x:
             self.remove_money(x)
             return x
         print('You do not have enough money to bet that much')
-        return 0
+        return 0 #return 0 so the other functions can see if the bet was successful
 
-    def options(self):
+    def options(self): #this is the main menu
         ans = None
         while ans not in (1, 2):
             print('   1. Add money')

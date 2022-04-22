@@ -1,8 +1,23 @@
 import random
+from time import sleep
 
+#coinflip
 class coinflip:
     flip_the_coin = random.choice([0, 1]) #heads(0) or tails(1)
 
+def coin_game():
+    coin = None
+    while coin != 0 and coin != 1:
+        coin = int(input('Heads or tails?: '))
+        coin_condition(coin)
+
+def coin_condition(coin):
+    if coin == coinflip.flip_the_coin:
+        print('You won!')
+    else:
+        print('You lost!')
+ 
+#roulette
 class roulette:
     #make a roullete dictionary
     dic = {
@@ -47,19 +62,7 @@ class roulette:
     def __init__(self, dic):
         self.dic = dic
     rand_choice = lambda self : random.choice(list(self.dic)) #randomly chooses a roulette slot
-    check_win = lambda self, choice : self.rand_choice(roulette) == choice #checks if the player won
-    
-def coin_game():
-    coin = None
-    while coin != 0 and coin != 1:
-        coin = int(input('Heads or tails?: '))
-        coin_condition(coin)
-
-def coin_condition(coin):
-    if coin == coinflip.flip_the_coin:
-        print('You won!')
-    else:
-        print('You lost!')
+    check_win = lambda self, choice : self.rand_choice(roulette) == choice #checks if the player won    
 
 def roullete_game():
     ans = None
@@ -69,7 +72,7 @@ def roullete_game():
         case 'color':
             color_case()
         case 'number':
-            number_case()
+            number_case()    
 
 def color_case():
     color = None
@@ -88,7 +91,25 @@ def number_case():
         print('You won!')
   else:
         print('You lost!')
-        
+
+#slots
+class slots:        
+    choices = ['cherry', 'lemon', 'orange', 'plum', 'bar', 'bell', 'seven']
+    def __init__(self, choices):
+        self.choices = choices
+    rand_choice = lambda self : random.choice(list(self.choices)) #randomly chooses a slot
+    make_slot = lambda self : [self.rand_choice(slots)]*3 #makes a slot
+    check_win = lambda slot : slot[0] == slot[1] == slot[2] #checks if the player won
+
+def slots_game():
+    slot_machine = slots.make_slot(slots)
+    print(slot_machine[0])
+    sleep(1)
+    print(slot_machine[1])
+    sleep(1)
+    print(slot_machine[2])
+    print('You won!' if slots.check_win(slot_machine) else 'You lost!')
+
 if __name__ == '__main__':
     pass
 else:

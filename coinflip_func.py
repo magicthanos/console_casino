@@ -13,7 +13,7 @@ def coin_game(b):
     if x:  #if the bet was successful
         coin = None
         while coin not in ('heads', 'tails'):
-            coin = int(input('Heads or tails?: '))
+            coin = input('Heads or tails?: ')
             coin_condition(coin, b, x)
 
 

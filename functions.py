@@ -76,7 +76,7 @@ def roullete_game():
 
 def color_case():
     color = None
-    while color != 'red' and color != 'black':
+    while color != 'red' and color != 'black' and color != 'green':
         color = input('What color would you like to bet on?: ')
     if color == roulette.dic[roulette.rand_choice(roulette)]:
         print('You won!')
